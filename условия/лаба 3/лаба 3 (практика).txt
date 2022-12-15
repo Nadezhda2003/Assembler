@@ -1,0 +1,81 @@
+loop ecx=ecx-1 и смотрит равен ли он нулю, если ecx==0 или ecx не равен 0 (A1)
+y=(a/b)+a*b-a
+Знаковый
+int ed
+_asm {
+    mov eax, a
+    imul ed
+    idiv b
+    mov r1, eax
+    mov eax, a
+    imul b
+    mov r2, eax
+    mov eax, r1
+    add eax, r2
+    sub eax, a
+    mov res, eax
+}
+_asm {
+mov eax, a
+    cdq
+    idiv b
+    mov r1, eax
+    mov eax, a
+    imul b
+    mov r2, eax
+    mov eax, r1
+    add eax, r2
+    sub eax, a
+    mov res, eax
+}
+Беззнаковый
+_asm {
+mov edx, 0
+mov eax, a
+    div b
+    mov r1, eax
+    mov eax, a
+    mul b
+    mov r2, eax
+    mov eax, r1
+    add eax, r2
+    sub eax, a
+    mov res, eax
+}
+Задача 1 сумма первых n чисел
+_asm {
+ mov ecx, n
+mov edx, 0
+mov eax, 0
+m1: cmp ecx, 0
+je end1
+add eax, ecx
+dc ecx
+jmp m1
+end1: mov s, eax
+}
+Задача 2 Перевернуть любое число
+int D10=10;
+int count
+int n, n1;
+int s=0;
+cin>>n;
+_asm {
+mov eax, n
+m1: cmp eax, 0
+je end1
+mov edx, 0
+mov ebx, 10
+div ebx
+push edx
+inc count
+jmp m1
+end1: mov ecx, count
+m2:mov eax, 0
+mov ebx, 0
+pop ebx
+add eax, ebx
+mul D10
+loop m2
+}
+0,1,2,3,4,5,6,7,8,9

@@ -1,0 +1,13 @@
+xor esi, esi
+m1: mov dh, s1[esi]
+cmp 'A', dh
+ja thenl_
+cmp dh, 'Z'
+ja thenl_
+mov s1[esi], '*'
+thenl_:
+inc esi
+loop m1
+strlen
+repe repne
+Программа, которая вызывает strlen и сама посчитает длину строки

@@ -1,0 +1,12 @@
+char s1[100], s2[]="Да_будет_славен_ФПМ";
+_asm {
+mov ecx, k
+mov esi, 0
+m1: mov al, s2[esi]
+cmp al, ' '
+je end_
+mov s1[esi], al
+inc esi
+loop m1
+end_:
+}
